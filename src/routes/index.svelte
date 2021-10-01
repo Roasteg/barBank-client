@@ -1,4 +1,7 @@
-<script></script>
+<script>
+
+
+</script>
 
 <style>
 	h1, figure, p {
