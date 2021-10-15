@@ -1,5 +1,7 @@
 <script>
     import {goto, stores} from "@sapper/app";
+    import {post} from "utils.js";
+
 
     export let segment;
     const {page, session} = stores();
@@ -60,12 +62,12 @@
 <!--{JSON.stringify($session)}-->
 <nav>
     <ul>
-        <li><a aria-current="{segment === undefined ? 'page' : undefined}" href="{logout}" on:click|preventDefault={logout}>home</a></li>
-        {#if $session.token}
-            <li><a aria-current="{segment === undefined ? 'page' : undefined}" href="login" >Logout</a></li>
-        {:else}
+        {#if !$session.token}
             <li><a href="signup">Sign Up</a></li>
             <li><a href="signin">Sign In</a></li>
+        {:else}
+            <li><a aria-current="{segment === undefined ? 'page' : undefined}" href="{logout}" on:click|preventDefault={logout}>Logout</a></li>
+            <li><a aria-current="{segment === undefined ? 'page' : undefined}" href="overview" >Overview</a></li>
         {/if}
 
     </ul>

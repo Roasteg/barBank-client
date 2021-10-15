@@ -1,10 +1,10 @@
-<!--<script context="module">
+<script context="module">
     export async function reload({ params }, {token}) {
         if (token) {
-            this.redirect(302, '/');
+            this.redirect(302, '/overview');
         }
     }
-</script> -->
+</script>
 
 <script>
     import { goto, stores } from '@sapper/app';
@@ -20,7 +20,7 @@
         error = response.error;
         if (response.token) {
             $session.token = response.token;
-            goto('/');
+            goto('/overview');
         }
     }
 </script>
@@ -35,7 +35,7 @@
             <div class="col-md-6 offset-md-3 col-xs-12">
                 <h1 class="text-xs-center">Sign In</h1>
                 <p class="text-xs-center">
-                    <a href="/register">Need an account?</a>
+                    <a href="/signup">Need an account?</a>
                 </p>
                 {#if error}
                     <div class="alert alert-danger" role="alert">{error}</div>
